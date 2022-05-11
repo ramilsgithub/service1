@@ -15,8 +15,8 @@ public class AppController {
   private final RestTemplate rest;
 
   @GetMapping("/")
-  public Greeting handle(@RequestParam("name") String name) {
-    Greeting result = rest.getForObject("http://localhost:8082?name=Jim", Greeting.class);
+  public Greeting handle(@RequestParam(name = "name", defaultValue = "Alex") String name) {
+    Greeting result = rest.getForObject(String.format("http://localhost:8082?name=%s", name), Greeting.class);
     log.info("got: {}", result);
     Greeting greeting = new Greeting(result.getMessage().toUpperCase());
     log.info("modified: {}", greeting);
