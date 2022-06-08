@@ -1,0 +1,21 @@
+version: "3.6"
+
+services:
+  app1:
+    image: service1
+    container_name: service_1
+    ports:
+      - 8081:8081
+    depends_on:
+      - app2
+
+  app2:
+     image: service2
+     container_name: service_2
+     ports:
+       - 8082:8082
+
+
+
+
+
